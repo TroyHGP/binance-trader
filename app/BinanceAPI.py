@@ -114,7 +114,7 @@ class BinanceAPI:
         return data
 
     def _get(self, path, params={}):
-        params.update({"recvWindow": 120000})
+        params.update({"recvWindow": 60000})
         query = urlencode(self._sign(params))
         url = "%s?%s" % (path, query)
         header = {"X-MBX-APIKEY": self.key}
@@ -122,7 +122,7 @@ class BinanceAPI:
             timeout=30, verify=True).json()
 
     def _post(self, path, params={}):
-        params.update({"recvWindow": 120000})
+        params.update({"recvWindow": 60000})
         query = urlencode(self._sign(params))
         url = "%s" % (path)
         header = {"X-MBX-APIKEY": self.key}
@@ -149,7 +149,7 @@ class BinanceAPI:
         return "{:.8f}".format(price)
             
     def _delete(self, path, params={}):
-        params.update({"recvWindow": 120000})
+        params.update({"recvWindow": 60000})
         query = urlencode(self._sign(params))
         url = "%s?%s" % (path, query)
         header = {"X-MBX-APIKEY": self.key}
